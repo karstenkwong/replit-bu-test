@@ -9,7 +9,7 @@ import { ThemeHandler } from '../themeHandler/themeHandler';
 function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: PopoutHandler): Menu {
     const template: MenuItemConstructorOptions[] = [
         {
-            label: 'HKBU',
+            label: 'HKBUCSD',
             submenu: [
                 {
                     label: 'Moodle',
@@ -19,14 +19,100 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                 },
                 {
                     label: 'Buniport',
-                    click(){
+                    click() {
                         shell.openExternal('https://buniport03.hkbu.edu.hk/');
                     }
-                },{
+                },
+                {
                     label: 'Computer Science',
-                    click(){
+                    click() {
                         shell.openExternal('https://www.comp.hkbu.edu.hk/v1/');
                     }
+                }
+            ]
+        },
+        {
+            label: 'Window',
+            submenu: [
+                {
+                    label: 'Go Back',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        if (win.webContents.canGoBack()) {
+                            win.webContents.goBack();
+                        }
+                    }
+                },
+                {
+                    label: 'Go Forward',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        if (win.webContents.canGoForward()) {
+                            win.webContents.goForward();
+                        }
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Open in Browser',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        shell.openExternal(win.webContents.getURL());
+                    }
+                },
+                {
+                    label: 'Replit Homepage',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        win.loadURL('https://replit.com/~').catch();
+                    }
+                },
+                /*
+                {
+                    accelerator: 'CmdOrCtrl+f',
+                    label: 'Select input',
+                    click(i: MenuItem, win: BrowserWindow) {
+                        selectInput(<ElectronWindow>win);
+                    }
+                },*/
+                {
+                    type: 'separator'
+                },
+                {
+                    accelerator: 'CmdOrCtrl+R',
+                    label: 'Reload',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        if (win) win.reload();
+                    }
+                },
+                {
+                    label: 'Toggle Developer Tools',
+                    accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+                    click: (i: MenuItem, win: BrowserWindow) => {
+                        if (win) win.webContents.toggleDevTools();
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    role: 'resetZoom'
+                },
+                {
+                    role: 'zoomIn'
+                },
+                {
+                    role: 'zoomOut'
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    role: 'togglefullscreen'
+                },
+                {
+                    role: 'minimize'
+                },
+                {
+                    role: 'close'
                 }
             ]
         },
@@ -59,12 +145,13 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                                 win.loadURL('https://replit.com/~/cli').catch();
                             }
                         },
+                        /*
                         {
                             label: 'Replit Feedback',
                             click(i: MenuItem, win: BrowserWindow) {
                                 win.loadURL('https://replit.canny.io').catch();
                             }
-                        },
+                        },*/
                         {
                             label: 'Docs',
                             click() {
@@ -125,7 +212,7 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                 }
             ]
         },
-        {
+        /*{
             label: 'View',
             submenu: [
                 {
@@ -152,7 +239,7 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                     }
                 }
             ]
-        },
+        },*/
         {
             label: 'Edit',
             submenu: [
@@ -195,111 +282,26 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
             ]
         },
         {
-            label: 'Window',
-            submenu: [
-                {
-                    label: 'Go Back',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        if (win.webContents.canGoBack()) {
-                            win.webContents.goBack();
-                        }
-                    }
-                },
-                {
-                    label: 'Go Forward',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        if (win.webContents.canGoForward()) {
-                            win.webContents.goForward();
-                        }
-                    }
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    label: 'Open in Browser',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        shell.openExternal(win.webContents.getURL());
-                    }
-                },
-                {
-                    label: 'Go to Home',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        win.loadURL('https://replit.com/~').catch();
-                    }
-                },
-                /*
-                {
-                    accelerator: 'CmdOrCtrl+f',
-                    label: 'Select input',
-                    click(i: MenuItem, win: BrowserWindow) {
-                        selectInput(<ElectronWindow>win);
-                    }
-                },*/
-                {
-                    type: 'separator'
-                },
-                {
-                    accelerator: 'CmdOrCtrl+R',
-                    label: 'Reload',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        if (win) win.reload();
-                    }
-                },
-                {
-                    label: 'Toggle Developer Tools',
-                    accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-                    click: (i: MenuItem, win: BrowserWindow) => {
-                        if (win) win.webContents.toggleDevTools();
-                    }
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'resetZoom'
-                },
-                {
-                    role: 'zoomIn'
-                },
-                {
-                    role: 'zoomOut'
-                },
-                {
-                    type: 'separator'
-                },
-                {
-                    role: 'togglefullscreen'
-                },
-                {
-                    role: 'minimize'
-                },
-                {
-                    role: 'close'
-                }
-            ]
-        },
-        {
             role: 'help',
             submenu: [
-                {
+                /*{
                     label: 'Replit discord',
                     click() {
                         shell.openExternal('https://replit.com/discord');
                     }
-                },
+                },*/
                 {
                     label: 'Report an issue',
                     click() {
-                        shell.openExternal('https://github.com/repl-it-discord/repl-it-electron/issues/new/choose');
+                        shell.openExternal('mailto: karsten@hkbu.edu.hk');
                     }
                 },
-                {
+                /*{
                     label: 'Github Repo',
                     click() {
                         shell.openExternal('https://github.com/repl-it-discord/repl-it-electron');
                     }
-                },
+                },*/
                 { label: 'Version', role: 'about' }
             ]
         }
