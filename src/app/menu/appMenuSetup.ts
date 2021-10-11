@@ -9,6 +9,28 @@ import { ThemeHandler } from '../themeHandler/themeHandler';
 function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: PopoutHandler): Menu {
     const template: MenuItemConstructorOptions[] = [
         {
+            label: 'HKBU',
+            submenu: [
+                {
+                    label: 'Moodle',
+                    click() {
+                        shell.openExternal('https://buelearning.hkbu.edu.hk/login/index.php');
+                    }
+                },
+                {
+                    label: 'Buniport',
+                    click(){
+                        shell.openExternal('https://buniport03.hkbu.edu.hk/');
+                    }
+                },{
+                    label: 'Computer Science',
+                    click(){
+                        shell.openExternal('https://www.comp.hkbu.edu.hk/v1/');
+                    }
+                }
+            ]
+        },
+        {
             label: 'App',
             submenu: [
                 {

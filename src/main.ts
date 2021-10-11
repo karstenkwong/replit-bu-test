@@ -46,7 +46,7 @@ async function initUpdater() {
         updater.cleanUp();
     });
     updater.once('all-done', () => {
-        launcher.updateStatus({ text: 'Launching app' });
+        launcher.updateStatus({ text: 'Launching HKBUCS Replit...' });
         initApp();
     });
     if (process.execPath.includes('electron')) {
