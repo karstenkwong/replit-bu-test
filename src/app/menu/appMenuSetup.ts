@@ -9,29 +9,6 @@ import { ThemeHandler } from '../themeHandler/themeHandler';
 function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: PopoutHandler): Menu {
     const template: MenuItemConstructorOptions[] = [
         {
-            label: 'HKBUCSD',
-            submenu: [
-                {
-                    label: 'Moodle',
-                    click() {
-                        shell.openExternal('https://buelearning.hkbu.edu.hk/login/index.php');
-                    }
-                },
-                {
-                    label: 'Buniport',
-                    click() {
-                        shell.openExternal('https://buniport03.hkbu.edu.hk/');
-                    }
-                },
-                {
-                    label: 'Computer Science',
-                    click() {
-                        shell.openExternal('https://www.comp.hkbu.edu.hk/v1/');
-                    }
-                }
-            ]
-        },
-        {
             label: 'Window',
             submenu: [
                 {
@@ -119,6 +96,7 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
         {
             label: 'App',
             submenu: [
+                /*
                 {
                     label: 'Themes',
                     submenu: [
@@ -132,38 +110,6 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                             label: 'Make Theme',
                             click() {
                                 themeHandler.openMaker();
-                            }
-                        }
-                    ]
-                },
-                {
-                    label: 'Links',
-                    submenu: [
-                        {
-                            label: 'CLI',
-                            click(i: MenuItem, win: BrowserWindow) {
-                                win.loadURL('https://replit.com/~/cli').catch();
-                            }
-                        },
-                        /*
-                        {
-                            label: 'Replit Feedback',
-                            click(i: MenuItem, win: BrowserWindow) {
-                                win.loadURL('https://replit.canny.io').catch();
-                            }
-                        },*/
-                        {
-                            label: 'Docs',
-                            click() {
-                                let win = new ElectronWindow(
-                                    {
-                                        height: 900,
-                                        width: 1600
-                                    },
-                                    '',
-                                    true
-                                );
-                                win.loadURL('https://docs.replit.com');
                             }
                         }
                     ]
@@ -184,7 +130,7 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                             }
                         }
                     ]
-                },
+                },*/
                 { type: 'separator' },
                 {
                     label: 'Restore Session',
@@ -212,34 +158,6 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                 }
             ]
         },
-        /*{
-            label: 'View',
-            submenu: [
-                {
-                    label: 'Popout Terminal',
-                    click(i: MenuItem, win: BrowserWindow) {
-                        popoutHandler.launch(<ElectronWindow>win);
-                    }
-                },
-                {
-                    label: 'Mobile View',
-                    type: 'checkbox',
-                    checked: <boolean>settings.get('enable-ace'),
-                    click(item: MenuItem) {
-                        mainApp.toggleAce(item);
-                    }
-                },
-                {
-                    label: 'Crosis Logs',
-                    click(i: MenuItem, win: ElectronWindow) {
-                        // suggestion: check if the page is on a repl, and if so, just add ?debug=1
-                        win.webContents.executeJavaScript(
-                            "if(!window.store){alert('You need to be on a repl to use this feature.')};window.store.dispatch({type: 'LOAD_PLUGIN',pluginPud: 'adminpanel',pluginType: 'adminpanel',title: 'adminpanel'});window.store.dispatch({type: 'ADD_SIDE_NAV_ITEM',navItem: {pud: 'adminpanel',pluginType: 'adminpanel',tooltip: 'Crosis Logs',svg: 'Alien'}});"
-                        );
-                    }
-                }
-            ]
-        },*/
         {
             label: 'Edit',
             submenu: [
@@ -281,6 +199,78 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                 }
             ]
         },
+        /*{
+            label: 'View',
+            submenu: [
+                {
+                    label: 'Popout Terminal',
+                    click(i: MenuItem, win: BrowserWindow) {
+                        popoutHandler.launch(<ElectronWindow>win);
+                    }
+                },
+                {
+                    label: 'Mobile View',
+                    type: 'checkbox',
+                    checked: <boolean>settings.get('enable-ace'),
+                    click(item: MenuItem) {
+                        mainApp.toggleAce(item);
+                    }
+                },
+                {
+                    label: 'Crosis Logs',
+                    click(i: MenuItem, win: ElectronWindow) {
+                        // suggestion: check if the page is on a repl, and if so, just add ?debug=1
+                        win.webContents.executeJavaScript(
+                            "if(!window.store){alert('You need to be on a repl to use this feature.')};window.store.dispatch({type: 'LOAD_PLUGIN',pluginPud: 'adminpanel',pluginType: 'adminpanel',title: 'adminpanel'});window.store.dispatch({type: 'ADD_SIDE_NAV_ITEM',navItem: {pud: 'adminpanel',pluginType: 'adminpanel',tooltip: 'Crosis Logs',svg: 'Alien'}});"
+                        );
+                    }
+                }
+            ]
+        },*/
+        {
+            label: 'Links',
+            submenu: [
+                {
+                    label: 'Moodle',
+                    click() {
+                        shell.openExternal('https://buelearning.hkbu.edu.hk/login/index.php');
+                    }
+                },
+                {
+                    label: 'Buniport',
+                    click() {
+                        shell.openExternal('https://buniport03.hkbu.edu.hk/');
+                    }
+                },
+                {
+                    label: 'HKBUCSD',
+                    click() {
+                        shell.openExternal('https://www.comp.hkbu.edu.hk/v1/');
+                    }
+                },
+                { type: 'separator' },
+                {
+                    label: 'Docs',
+                    click() {
+                        let win = new ElectronWindow(
+                            {
+                                height: 900,
+                                width: 1600
+                            },
+                            '',
+                            true
+                        );
+                        win.loadURL('https://docs.replit.com');
+                    }
+                },
+                {
+                    label: 'CLI',
+                    click(i: MenuItem, win: BrowserWindow) {
+                        win.loadURL('https://replit.com/~/cli').catch();
+                    }
+                }
+            ]
+        },
         {
             role: 'help',
             submenu: [
@@ -293,7 +283,9 @@ function appMenuSetup(mainApp: App, themeHandler: ThemeHandler, popoutHandler: P
                 {
                     label: 'Report an issue',
                     click() {
-                        shell.openExternal('mailto: karsten@hkbu.edu.hk');
+                        shell.openExternal(
+                            'https://mail.google.com/mail/?view=cm&fs=1&to=karsten@comp.hkbu.edu.hk&su=Report HKBUCS Replit Desktop issue'
+                        );
                     }
                 },
                 /*{

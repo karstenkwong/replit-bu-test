@@ -8,7 +8,7 @@ class Launcher {
             {
                 show: false,
                 resizable: false,
-                height: 400,
+                height: 350,
                 width: 250,
                 frame: false,
                 center: true

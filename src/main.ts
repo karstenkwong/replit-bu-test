@@ -6,7 +6,7 @@ import { Launcher } from './launcher/launcher';
 import { Updater } from './launcher/updater';
 import { settings } from './app/settingHandler';
 
-app.setName('Replit Desktop');
+app.setName('HKBUCS Replit Desktop');
 app.disableHardwareAcceleration();
 console.log(`Version: ${app.getVersion()}`);
 

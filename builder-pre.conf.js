@@ -1,6 +1,6 @@
 module.exports = {
-    appId: 'replit-desktop.replit-discord',
-    productName: 'Replit Desktop',
+    appId: 'HKBUCSD.Replit.Desktop',
+    productName: 'HKBUCS Replit Desktop',
     asar: false,
     generateUpdatesFilesForAllChannels: false,
     npmRebuild: false,
@@ -13,7 +13,7 @@ module.exports = {
     mac: {
         target: { target: 'zip', arch: ['arm64', 'x64'] },
         darkModeSupport: true,
-        icon: 'logos/replit-logo/icns/icon.icns'
+        icon: 'logos/replit-logo/icns/icon_new.icns'
     },
     win: {
         target: [{ target: 'zip' }, { target: 'portable' }],
@@ -24,7 +24,7 @@ module.exports = {
             target: 'tar.gz'
         },
         //icon: 'src/assets/replit-logo/256x256.png',
-        maintainer: 'leon332157',
+        maintainer: 'hkbucs',
         category: 'Development'
     }
 };

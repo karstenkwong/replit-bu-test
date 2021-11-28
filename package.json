@@ -1,7 +1,7 @@
 {
-  "name": "replit-desktop",
-  "productName": "Replit Desktop",
-  "version": "3.0.0-beta5",
+  "name": "hkbucs-replit-desktop",
+  "productName": "HKBUCS Replit Desktop",
+  "version": "0.1.0-alpha-test",
   "description": "Desktop version of replit",
   "keywords": [
     "electron",
@@ -11,9 +11,9 @@
     "Program editor",
     "discord-rpc"
   ],
-  "repository": "https://github.com/replit-discord/replit-desktop",
+  "repository": "https://github.com/karstenkwong/replit-bu-test",
   "license": "Apache-2.0",
-  "author": "leon332157&repl-it-discord",
+  "author": "hkbucsd",
   "main": "main.js",
   "scripts": {
     "build:app:test": "electron-builder -c electron-builder.conf.js --dir",
@@ -62,5 +62,5 @@
     "sucrase": "^3.20.1",
     "typescript": "^4.3.5"
   },
-  "email": "leon331257@gmail.com"
+  "email": "karsten@comp.hkbu.edu.hk"
 }

@@ -47,7 +47,8 @@ class Updater extends EventEmitter {
     }
 
     async checkUpdate(): Promise<CheckUpdateResult> {
-        try {
+        return { hasUpdate: false };
+        /*try {
             const res: GithubReleaseResponse = this.decodeReleaseResponse(
                 await (await fetch('https://api.github.com/repos/replit-discord/replit-desktop/releases/latest')).json()
             );
@@ -85,7 +86,7 @@ class Updater extends EventEmitter {
         } catch (e) {
             console.error(e);
             return { hasUpdate: false, changeLog: 'error' };
-        }
+        }*/
     }
 
     async downloadUpdate(url: string): Promise<void> {
